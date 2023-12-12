@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "708228855925",
+    "project_id": "arab-app-33851",
+    "storage_bucket": "arab-app-33851.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708228855925:android:b2c34b7e6ce265ea35203c",
+        "android_client_info": {
+          "package_name": "com.example.arab_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5AlQ0tpO91fbQyUpmG2t05fxKjpD6Mjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
