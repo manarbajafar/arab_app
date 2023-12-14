@@ -108,7 +108,7 @@ class _loginState extends State<login> {
 //                   ),
 //                 ),
                         const SizedBox(
-                          height: 10,
+                          height: 70,
                         ),
                         // TextButton(
                         //   style: TextButton.styleFrom(
@@ -150,7 +150,6 @@ class _loginState extends State<login> {
                           height: 100,
                         ),
                         Text(verificationFailedMessage),
-                        const Spacer(),
                       ],
                     ))));
   }

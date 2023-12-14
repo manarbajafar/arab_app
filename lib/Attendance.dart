@@ -5,9 +5,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:arab_app/HomeScreen.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+
+import 'controllers/user_controller.dart';
 
 class Attendance extends StatefulWidget {
   const Attendance({super.key});
@@ -29,6 +32,10 @@ double pi = 3.1415926535897932;
 String? Massege = ''; //location statuse
 String? currentLocationName;
 
+//***
+final _users_controller = Get.put(UsersController());
+
+//***
 class _AttendanceState extends State<Attendance> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -36,8 +43,8 @@ class _AttendanceState extends State<Attendance> {
     {
       "id": '1234',
       "LocationName": 'company 1',
-      "lat": 21.5578729,
-      "lng": 39.7885081,
+      "lat": 21.4493708, //21.4493990
+      "lng": 39.7632021, //39.7632410
       "radius": 0.02
     },
     {
@@ -142,7 +149,6 @@ class _AttendanceState extends State<Attendance> {
                       color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),
-
 
               const SizedBox(
                 height: 30,
@@ -350,6 +356,10 @@ class _AttendanceState extends State<Attendance> {
           print(e!.code);
           print(indexLocation);
           print("yessssssssssssssssssssssssss");
+
+          //*****************
+          _users_controller.store_entry_time(DateTime.now());
+          //*****************
           print(DISTANCE);
           print(Massege);
         } else {
@@ -514,6 +524,11 @@ class _AttendanceState extends State<Attendance> {
                   print(
                       "${checkoutTime?.hour}:${checkoutTime?.minute}:${checkoutTime?.second}");
                   print(indexLocation);
+
+                  //*****************
+                  _users_controller.store_exit_time(DateTime.now());
+                  //*****************
+
                   // data = '';
                   // vl = false;
                   // chcekinTime = null;

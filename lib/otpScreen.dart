@@ -16,7 +16,7 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPPageState extends State<OTPScreen> {
-  final otpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   bool showLoading = false;
   String verificationFailedMessage = "";
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -32,7 +32,7 @@ class _OTPPageState extends State<OTPScreen> {
 
   @override
   void initState() {
-    errorController = StreamController<ErrorAnimationType>();
+    errorController = StreamController<ErrorAnimationType>.broadcast();
     userVerificationId = widget.verificationId;
     isTimeOut = widget.isTimeOut2;
     super.initState();
@@ -75,7 +75,7 @@ class _OTPPageState extends State<OTPScreen> {
                             text: "ادخل الرقم التي تم ارساله إلى جوالك",
                             children: [
                               TextSpan(
-                                  text: "",
+                                  text: "", //phone number
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -95,6 +95,7 @@ class _OTPPageState extends State<OTPScreen> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 30),
                           child: PinCodeTextField(
+                            autoDisposeControllers: false,
                             appContext: context,
                             length: 6,
                             animationType: AnimationType.fade,
@@ -161,7 +162,7 @@ class _OTPPageState extends State<OTPScreen> {
                                     });
                                     await FirebaseAuth.instance
                                         .verifyPhoneNumber(
-                                      phoneNumber: '+966555555555',
+                                      phoneNumber: '+966555555555', //from db
                                       verificationCompleted:
                                           (PhoneAuthCredential credential) {},
                                       verificationFailed:
@@ -231,6 +232,7 @@ class _OTPPageState extends State<OTPScreen> {
                               : () async {
                                   formKey.currentState!.validate();
                                   // conditions for validating
+                                  //code from db
                                   if (currentText.length != 6 ||
                                       currentText != "000000") {
                                     errorController!.add(ErrorAnimationType
