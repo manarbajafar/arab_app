@@ -178,9 +178,9 @@ class _loginState extends State<login> {
       },
       timeout: const Duration(seconds: 30),
       codeAutoRetrievalTimeout: (String verificationId) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                OTPScreen(isTimeOut2: true, verificationId: verificationId)));
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) =>
+        //         OTPScreen(isTimeOut2: true, verificationId: verificationId)));
       },
     );
 
